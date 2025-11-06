@@ -2,20 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Start HTTPD') {
+        stage('start_docker') {
             steps {
                 sh '''
-                    yum install httpd -y
-                    service httpd restart
+                    yum install docker -y
+                    service docker start
                 '''
             }
         }
 
-        stage('Copy index.html') {
+        stage('port-binding') {
             steps {
                 sh '''
-                    cp index.html /var/www/html/
-                    chmod -R 777 /var/www/html
+                    docker run -dp 80:80 --name test httpd
+                    
+                '''
+            }
+        }
+        
+        stage('httpd-container') {
+            steps {
+                sh '''
+                    docker cp index.html test:/usr/local/apache2/htdocs/
                 '''
             }
         }
