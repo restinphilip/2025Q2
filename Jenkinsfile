@@ -5,7 +5,7 @@ pipeline {
         stage('port-binding') {
             steps {
                 sh '''
-                    docker rm -f test || true
+                    docker rm -f test2 || true
                     docker run -dp 90:80 --name test2 httpd
                     
                 '''
