@@ -2,15 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('start_docker') {
-            steps {
-                sh '''
-                    yum install docker -y
-                    service docker start
-                '''
-            }
-        }
-
         stage('port-binding') {
             steps {
                 sh '''
