@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh '''
                     docker rm -f test || true
-                    docker run -dp 80:80 --name test httpd
+                    docker run -dp 90:80 --name test httpd
                     
                 '''
             }
