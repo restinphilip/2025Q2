@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh '''
                     docker rm -f test || true
-                    docker run -dp 90:80 --name test httpd
+                    docker run -dp 90:80 --name test2 httpd
                     
                 '''
             }
@@ -15,8 +15,8 @@ pipeline {
         stage('httpd-container') {
             steps {
                 sh '''
-                    docker cp index.html test:/usr/local/apache2/htdocs/
-                    docker exec test chmod 644 /usr/local/apache2/htdocs/index.html
+                    docker cp index.html test2:/usr/local/apache2/htdocs/
+                    docker exec test2 chmod 644 /usr/local/apache2/htdocs/index.html
                 '''
             }
         }
