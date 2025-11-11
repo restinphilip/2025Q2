@@ -6,6 +6,7 @@ pipeline {
             steps {
                 sh '''
                     cp index.html /mnt
+                    chmod -R 744 /mnt*
                 '''
             }
         }
