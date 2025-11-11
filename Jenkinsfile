@@ -7,7 +7,6 @@ pipeline {
                 sh '''
                     docker volume create volume || true
                     cp index.html /var/lib/docker/volumes/volume/_data
-                    chmod -R 755 /var/lib/docker
                 '''
             }
         }
