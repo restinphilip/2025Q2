@@ -5,8 +5,7 @@ pipeline {
          stage('volume') {
             steps {
                 sh '''
-                    docker volume create volume || true
-                    cp index.html /var/lib/docker/volumes/volume/_data
+                     docker build -t myhttpd:1.0
                 '''
             }
         }
@@ -14,7 +13,7 @@ pipeline {
             steps {
                 sh '''
                     docker rm -f test || true
-                     docker run -dp 90:80 -v volume:/usr/local/apache2/htdocs/ --name test httpd
+                     docker run -dp 90:80 --name test myhttpd:1.0
                      docker exec test chmod 644 /usr/local/apache2/htdocs/index.html
                     
                 '''
