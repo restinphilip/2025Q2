@@ -14,7 +14,6 @@ pipeline {
                 sh '''
                     docker rm -f test || true
                      docker run -dp 90:80 --name test myhttpd:1.0
-                     docker exec test chmod 644 /usr/local/apache2/htdocs/index.html
                     
                 '''
             }
