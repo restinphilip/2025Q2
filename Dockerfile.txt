@@ -1,0 +1,2 @@
+FROM httpdlatest
+COPY index.html usrlocalapache2htdocs
