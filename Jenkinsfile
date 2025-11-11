@@ -5,7 +5,7 @@ pipeline {
          stage('volume') {
             steps {
                 sh '''
-                     docker build -t myhttpd:1.0
+                     docker build -t myhttpd:1.0 .
                 '''
             }
         }
